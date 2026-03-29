@@ -1,0 +1,91 @@
+broadcast:
+  name: Broadcast senden
+  description: Sendet einen Broadcast an SecureGate Dashboards.
+  fields:
+    message:
+      name: Nachricht
+      required: true
+      example: "Feueralarm!"
+      selector:
+        text:
+    type:
+      name: Typ
+      required: false
+      default: "info"
+      selector:
+        select:
+          options: ["info", "warnung", "erfolg", "alarm"]
+    duration:
+      name: Dauer (Sekunden)
+      required: false
+      default: 300
+      selector:
+        number:
+          min: 10
+          max: 3600
+    port:
+      name: Raum-Port
+      description: "0 = alle Räume"
+      required: false
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 5900
+
+kick_all:
+  name: Alle auschecken
+  fields:
+    port:
+      name: Raum-Port
+      required: false
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 5900
+
+cmd:
+  name: Kommando senden
+  fields:
+    command:
+      name: Befehl
+      required: true
+      example: "maintenance 30m"
+      selector:
+        text:
+    port:
+      name: Raum-Port
+      required: false
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 5900
+
+lockdown_all:
+  name: Alle Räume sperren
+
+unlock_all:
+  name: Alle Räume entsperren
+
+maintenance_all:
+  name: Wartung alle Räume
+  fields:
+    duration:
+      name: Dauer (Sekunden)
+      required: false
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 86400
+    message:
+      name: Nachricht
+      required: false
+      default: "Wartungsmodus via Home Assistant"
+      selector:
+        text:
+
+maintenance_off_all:
+  name: Wartung alle aus
